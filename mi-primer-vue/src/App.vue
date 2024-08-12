@@ -4,7 +4,7 @@
   const name = "Vue Pagina";
   // metodo methods
   const increment = () =>{
-    console.log('aumentar contador')
+    console.log('aumentar contador ++')
     contar.value++;
     console.log(contar);
   }
