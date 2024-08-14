@@ -36,29 +36,37 @@
   const anadir = () =>{
     arrayFavoritos.value.push(contar.value);
   }
+
+  const valiNumRepe = computed(() =>{
+    const numbusc = arrayFavoritos.value.find((num) => num === contar.value);
+    return numbusc || numbusc === 0;
+  });
 </script>
 
 <template>
-  <center>
-    <h1 style="text-decoration: underline">Pruebas 2 {{name.toUpperCase()}}</h1>
-    <br>
-    <button @click="increment">Incrementar</button>
-    <button @click="decrement">Decrementar</button>
-    <button @click="reset">Resetear Contador</button>
-    <button @click="anadir">Añadir</button>
-    <br>
-    <h2 :class="classCounter">Contador: {{contar}}</h2>
-    <br>
-    <h2>Lista de números</h2>
-    {{arrayFavoritos}}
-    <ul>
-      <li
-          v-for="(num, index) in arrayFavoritos" :key="index"
+
+    <div class="container text-center mt-3">
+      <h1 style="text-decoration: underline">Pruebas 2 {{name.toUpperCase()}}</h1>
+      <div class="btn-group">
+        <button @click="increment" class="btn btn-success">Incrementar</button>
+        <button @click="decrement" class="btn btn-danger">Decrementar</button>
+        <button @click="reset" class="btn btn-secondary">Resetear Contador</button>
+        <button @click="anadir" :disabled="valiNumRepe" class="btn btn-primary">Añadir</button>
+      </div>
+
+      <br>
+      <h2 :class="classCounter">Contador: {{contar}}</h2>
+      <br>
+      <h2>Lista de números</h2>
+
+      <ul class="list-group mt-4">
+        <li class="list-group-item"
+            v-for="(num, index) in arrayFavoritos" :key="index"
         >
-        {{num}}
-      </li>
-    </ul>
-  </center>
+          {{num}}
+        </li>
+      </ul>
+    </div>
 
 </template>
 
